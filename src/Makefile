@@ -1,59 +1,8 @@
 #******************************************************************************
 #
-#   raylib makefile
-#
-#   This file supports building raylib library for the following platforms:
-#
-#     > PLATFORM_DESKTOP
-#         - Defaults to PLATFORM_DESKTOP_GLFW
-#     > PLATFORM_DESKTOP_GLFW (GLFW backend):
-#         - Windows (Win32, Win64)
-#         - Linux (X11/Wayland desktop mode)
-#         - macOS/OSX (x64, arm64)
-#         - FreeBSD, OpenBSD, NetBSD, DragonFly (X11 desktop)
-#     > PLATFORM_DESKTOP_SDL (SDL backend):
-#         - Windows (Win32, Win64)
-#         - Linux (X11/Wayland desktop mode)
-#         - Others (not tested)
-#     > PLATFORM_DESKTOP_RGFW (RGFW backend):
-#         - Windows (Win32, Win64)
-#         - Linux (X11 desktop mode)
-#         - macOS/OSX (x64, arm64 (not tested))
-#         - Others (not tested)
-#     > PLATFORM_WEB_RGFW:
-#         - HTML5 (WebAssembly)
-#     > PLATFORM_WEB:
-#         - HTML5 (WebAssembly)
-#     > PLATFORM_DRM:
-#         - Raspberry Pi 0-5 (DRM/KMS)
-#         - Linux DRM subsystem (KMS mode)
-#     > PLATFORM_ANDROID:
-#         - Android (ARM, ARM64)
-#
-#   Many thanks to Milan Nikolic (@gen2brain) for implementing Android platform pipeline.
-#   Many thanks to Emanuele Petriglia for his contribution on GNU/Linux pipeline.
-#
-#   Copyright (c) 2013-2025 Ramon Santamaria (@raysan5)
-#
-#   This software is provided "as-is", without any express or implied warranty. In no event
-#   will the authors be held liable for any damages arising from the use of this software.
-#
-#   Permission is granted to anyone to use this software for any purpose, including commercial
-#   applications, and to alter it and redistribute it freely, subject to the following restrictions:
-#
-#     1. The origin of this software must not be misrepresented; you must not claim that you
-#     wrote the original software. If you use this software in a product, an acknowledgment
-#     in the product documentation would be appreciated but is not required.
-#
-#     2. Altered source versions must be plainly marked as such, and must not be misrepresented
-#     as being the original software.
-#
-#     3. This notice may not be removed or altered from any source distribution.
+#   RayFW makefile
 #
 #**************************************************************************************************
-
-# NOTE: Highly recommended to read the raylib Wiki to know how to compile raylib for different platforms
-# https://github.com/raysan5/raylib/wiki
 
 .PHONY: all clean install uninstall
 
@@ -638,7 +587,9 @@ OBJS = rcore.o \
        rshapes.o \
        rtextures.o \
        rtext.o \
-       utils.o
+       utils.o \
+       cJSON.o \
+       rJSON.o
 
 ifeq ($(TARGET_PLATFORM),PLATFORM_DESKTOP_GLFW)
     ifeq ($(USE_EXTERNAL_GLFW),FALSE)
@@ -737,7 +688,7 @@ endif
 rcore.o : platforms/*.c
 
 # Compile core module
-rcore.o : rcore.c raylib.h rlgl.h utils.h raymath.h rcamera.h rgestures.h
+rcore.o : rcore.c raylib.h rlgl.h utils.h raymath.h rcamera.h rgestures.h 
 	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile rglfw module
@@ -766,6 +717,14 @@ rmodels.o : rmodels.c raylib.h rlgl.h raymath.h
 
 # Compile audio module
 raudio.o : raudio.c raylib.h
+	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+
+# Compile JSON module
+
+cJSON.o : external/cJSON/cJSON.c 
+	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
+
+rJSON.o : rJSON.c raylib.h
 	$(CC) -c $< $(CFLAGS) $(INCLUDE_PATHS)
 
 # Compile raygui module

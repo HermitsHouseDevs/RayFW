@@ -81,6 +81,7 @@
 *     3. This notice may not be removed or altered from any source distribution.
 *
 **********************************************************************************************/
+#pragma once
 
 #ifndef RAYLIB_H
 #define RAYLIB_H
@@ -199,6 +200,10 @@
 #define BLANK      CLITERAL(Color){ 0, 0, 0, 0 }           // Blank (Transparent)
 #define MAGENTA    CLITERAL(Color){ 255, 0, 255, 255 }     // Magenta
 #define RAYWHITE   CLITERAL(Color){ 245, 245, 245, 255 }   // My own White (raylib logo)
+
+// rJSON Definitions
+#define JSONBufferSize 3000
+#define JSONRootStack 16
 
 //----------------------------------------------------------------------------------
 // Structures Definition
@@ -531,6 +536,19 @@ typedef struct AutomationEventList {
     unsigned int count;             // Events entries count
     AutomationEvent *events;        // Events entries
 } AutomationEventList;
+
+// rJSON Data Struct
+
+struct cJSON;
+
+typedef struct JsonData {
+    struct cJSON *Root;
+    struct cJSON *Subroot;
+    char *JsonBuffer;
+
+    struct cJSON *RootStack[JSONRootStack];
+    int StackTop;
+} JsonData;
 
 //----------------------------------------------------------------------------------
 // Enumerators Definition
@@ -1706,6 +1724,23 @@ RLAPI void DetachAudioStreamProcessor(AudioStream stream, AudioCallback processo
 
 RLAPI void AttachAudioMixedProcessor(AudioCallback processor); // Attach audio stream processor to the entire audio pipeline, receives frames x 2 samples as 'float' (stereo)
 RLAPI void DetachAudioMixedProcessor(AudioCallback processor); // Detach audio stream processor from the entire audio pipeline
+
+// JSON Functions from rJSON 
+RLAPI JsonData LoadJSON(const char *Path);
+RLAPI void UnloadJSON(JsonData JData);
+
+// Root Manipulation
+RLAPI void JSONSetDefaultRoot(JsonData *JData);
+RLAPI void JSONSetRoot(JsonData *JData, const char *RootKey);
+RLAPI void JSONPopRoot(JsonData *JData);
+
+// Data IO
+RLAPI int JSONFindInteger(JsonData *JData, const char *RootKey);
+RLAPI float JSONFindFloat(JsonData *JData, const char *RootKey);
+RLAPI const char *JSONFindString(JsonData *JData, const char *RootKey);
+RLAPI int JSONFindIntegerInArray(JsonData *JData, const char *RootKey, int Index);
+RLAPI float JSONFindFloatInArray(JsonData *JData, const char *RootKey, int Index);
+RLAPI const char *JSONFindStringInArray(JsonData *JData, const char *RootKey, int Index);
 
 #if defined(__cplusplus)
 }

@@ -661,7 +661,8 @@ OTHERS = \
     others/embedded_files_loading \
     others/raylib_opengl_interop \
     others/raymath_vector_angle \
-    others/rlgl_compute_shader
+    others/rlgl_compute_shader \
+    json/basic_io_json
 
 ifeq ($(TARGET_PLATFORM), PLATFORM_DESKTOP_GFLW)
     OTHERS += others/rlgl_standalone

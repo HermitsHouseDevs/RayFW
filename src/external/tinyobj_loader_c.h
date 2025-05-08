@@ -128,7 +128,7 @@ extern void tinyobj_materials_free(tinyobj_material_t *materials,
 #define TINYOBJ_FREE free
 #endif
 
-#define TINYOBJ_MAX_FACES_PER_F_LINE (160) // For Compatability - PW
+#define TINYOBJ_MAX_FACES_PER_F_LINE (160) // Updated for Larger OBJ Models Exported by Blender
 
 #define IS_SPACE(x) (((x) == ' ') || ((x) == '\t'))
 #define IS_DIGIT(x) ((unsigned int)((x) - '0') < (unsigned int)(10))

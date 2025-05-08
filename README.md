@@ -1,6 +1,6 @@
 
 
-![logo](https://github.com/HermitsHouseDevs/RayFW/blob/master/Logo/RFW192x192.png)
+![logo](https://github.com/HermitsHouseDevs/RayFW/blob/master/logo/RFW192x192.png)
 ***RayFrameWork* (RFW) is a Extension of the raylib project with added Modern Features.**
 
 Based on https://github.com/raysan5/Raylib/
@@ -31,6 +31,7 @@ RFW Goals & Features
 - Enhanced Shader Support with Mutiple Shader slots. *- In Development* 
 - **AMD Fidelity Super Resolution 2.0** Support. *- In Development* 
 - **3D Audio Support**.  *- In Development* 
+- **Easy JSON Support**.  *- Finished* 
 
 Build and Installation
 ----------------------
