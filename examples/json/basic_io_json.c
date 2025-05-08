@@ -1,7 +1,11 @@
+// RayFrameWork Basic JSON Example
+// HermitsHouse 2025
+
 #include "raylib.h"
 
 int main(void)
 {
+    // Screen Resolution 
     const int ScreenWidth = 800;
     const int ScreenHeight = 450;
 
@@ -9,7 +13,6 @@ int main(void)
 
 
     SetTargetFPS(60);                   // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
 
     int MyDogsAge = 0;
     float MyDogsHeight = 0.0f;
@@ -40,8 +43,7 @@ int main(void)
         EndDrawing();
 
     }
-    UnloadJSON(JsonExample);
-
+    UnloadJSON(JsonExample); // Always Free up your memory Kids 
     CloseWindow();       
     return 0;
 }
