@@ -614,7 +614,7 @@ const char *TextFormat(const char *text, ...);              // Formatting of tex
 // Initialize window and OpenGL context
 void InitWindow(int width, int height, const char *title)
 {
-    TRACELOG(LOG_INFO, "Initializing raylib %s", RAYLIB_VERSION);
+    TRACELOG(LOG_INFO, "Initializing RayFramework %s", RAYLIB_VERSION);
 
 #if defined(PLATFORM_DESKTOP_GLFW)
     TRACELOG(LOG_INFO, "Platform backend: DESKTOP (GLFW)");
@@ -636,7 +636,7 @@ void InitWindow(int width, int height, const char *title)
     TRACELOG(LOG_INFO, "Platform backend: CUSTOM");
 #endif
 
-    TRACELOG(LOG_INFO, "Supported raylib modules:");
+    TRACELOG(LOG_INFO, "Supported RayFramework modules:");
     TRACELOG(LOG_INFO, "    > rcore:..... loaded (mandatory)");
     TRACELOG(LOG_INFO, "    > rlgl:...... loaded (mandatory)");
 #if defined(SUPPORT_MODULE_RSHAPES)

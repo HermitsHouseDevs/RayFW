@@ -1413,6 +1413,7 @@ void UpdateMeshBuffer(Mesh mesh, int index, const void *data, int dataSize, int 
 }
 
 // Draw a 3d mesh with material and transform
+
 void DrawMesh(Mesh mesh, Material material, Matrix transform)
 {
 #if defined(GRAPHICS_API_OPENGL_11)

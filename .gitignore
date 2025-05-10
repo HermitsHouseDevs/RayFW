@@ -113,3 +113,6 @@ docgen_tmp/
 
 # Parser stuff
 parser/raylib_parser
+
+# Test
+tests/

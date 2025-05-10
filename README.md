@@ -35,7 +35,7 @@ RFW Goals & Features
 - **Live World Generation** Tools. *- In Development* 
 - Enhanced Shader Support with Mutiple Shader slots. *- In Development* 
 - **AMD Fidelity Super Resolution 2.0** Support. *- In Development* 
-- **3D Audio Support**.  *- In Development* 
+- **3D Audio Support**.  *- Finished* 
 - **Easy JSON Support**.  *- Finished* 
 
 Build and Installation

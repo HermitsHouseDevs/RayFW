@@ -536,7 +536,8 @@ AUDIO = \
     audio/audio_sound_loading \
     audio/audio_sound_multi \
     audio/audio_sound_positioning \
-    audio/audio_stream_effects
+    audio_stream_effects \
+    audio/audio_sound3d_stream
 
 OTHERS = \
     others/easings_testbed \
@@ -1197,6 +1198,11 @@ audio/audio_sound_multi: audio/audio_sound_multi.c
 audio/audio_stream_effects: audio/audio_stream_effects.c
 	$(CC) -o $@$(EXT) $< $(CFLAGS) $(INCLUDE_PATHS) $(LDFLAGS) $(LDLIBS) -D$(PLATFORM) -sTOTAL_MEMORY=67108864 \
     --preload-file audio/resources/country.mp3@resources/country.mp3
+
+audio/audio_sound3d_stream: audio/audio_sound3d_stream.c
+	$(CC) -o $@$(EXT) $< $(CFLAGS) $(INCLUDE_PATHS) $(LDFLAGS) $(LDLIBS) -D$(PLATFORM) -sTOTAL_MEMORY=67108864 \
+    --preload-file audio/resources/campfire.mp3@resources/campfire.mp3 \
+    --preload-file audio/resources/campfire.png@resources/campfire.png 
 
 
 # Compile OTHERS examples

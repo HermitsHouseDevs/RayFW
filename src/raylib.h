@@ -81,7 +81,6 @@
 *     3. This notice may not be removed or altered from any source distribution.
 *
 **********************************************************************************************/
-#pragma once
 
 #ifndef RAYLIB_H
 #define RAYLIB_H
@@ -91,7 +90,7 @@
 #define RAYLIB_VERSION_MAJOR 5
 #define RAYLIB_VERSION_MINOR 6
 #define RAYLIB_VERSION_PATCH 0
-#define RAYLIB_VERSION  "5.6-dev"
+#define RAYLIB_VERSION  "1.0"
 
 // Function specifiers in case library is build/used as a shared library
 // NOTE: Microsoft specifiers to tell compiler that symbols are imported/exported from a .dll
@@ -480,6 +479,11 @@ typedef struct Sound {
     AudioStream stream;         // Audio stream
     unsigned int frameCount;    // Total number of frames (considering channels)
 } Sound;
+
+// Sound 3D 
+typedef struct Sound3D {
+    int audioID; // Audio Identifier 
+} Sound3D;
 
 // Music, audio stream, anything longer than ~10 seconds should be streamed
 typedef struct Music {
@@ -1701,6 +1705,17 @@ RLAPI void SetMusicPitch(Music music, float pitch);                   // Set pit
 RLAPI void SetMusicPan(Music music, float pan);                       // Set pan for a music (0.5 is center)
 RLAPI float GetMusicTimeLength(Music music);                          // Get music time length (in seconds)
 RLAPI float GetMusicTimePlayed(Music music);                          // Get current music time played (in seconds)
+
+// 3D Sound Playback functions 
+RLAPI void InitAudioSystem3D();                                       // Initialize the 3D Functionality 
+RLAPI void UnloadAudioSystem3D();                                     // Clears all the allocated 3D Sounds
+RLAPI void UpdateAudioSystem3D();                                     // Used to update playback on 3D Sounds
+RLAPI void BindListenerToCamera(Camera3D camera);                     // Sets playback to camera position 
+RLAPI Sound3D LoadSound3D(const char *path);                          // Load from a file 
+RLAPI void UnloadSound3D(Sound3D sound3D);                            // Free up your memory kids 
+RLAPI void PlaySound3D(Sound3D sound3D, Vector3 position, float maxVolume, float minDistance, float maxDistance);  // Play sound at position and parameters 
+RLAPI void StopSound3D(Sound3D sound3D);                              // Stop sound 
+RLAPI bool IsSound3DPlaying(Sound3D sound3D);                         // Check if sound is playing. 
 
 // AudioStream management functions
 RLAPI AudioStream LoadAudioStream(unsigned int sampleRate, unsigned int sampleSize, unsigned int channels); // Load audio stream (to stream raw audio pcm data)

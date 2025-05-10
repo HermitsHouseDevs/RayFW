@@ -654,7 +654,8 @@ AUDIO = \
     audio/audio_sound_loading \
     audio/audio_sound_multi \
     audio/audio_sound_positioning \
-    audio/audio_stream_effects
+    audio/audio_stream_effects \
+    audio/audio_sound3d_stream
 
 OTHERS = \
     others/easings_testbed \

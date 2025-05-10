@@ -1,0 +1,29 @@
+** Functions to add to the Cheatsheet **
+
+// JSON Functions from rJSON 
+RLAPI JsonData LoadJSON(const char *Path);
+RLAPI void UnloadJSON(JsonData JData);
+
+// Root Manipulation
+RLAPI void JSONSetDefaultRoot(JsonData *JData);
+RLAPI void JSONSetRoot(JsonData *JData, const char *RootKey);
+RLAPI void JSONPopRoot(JsonData *JData);
+
+// Data IO
+RLAPI int JSONFindInteger(JsonData *JData, const char *RootKey);
+RLAPI float JSONFindFloat(JsonData *JData, const char *RootKey);
+RLAPI const char *JSONFindString(JsonData *JData, const char *RootKey);
+RLAPI int JSONFindIntegerInArray(JsonData *JData, const char *RootKey, int Index);
+RLAPI float JSONFindFloatInArray(JsonData *JData, const char *RootKey, int Index);
+RLAPI const char *JSONFindStringInArray(JsonData *JData, const char *RootKey, int Index);
+
+// 3D Sound Playback functions 
+RLAPI void InitAudioSystem3D();                                       // Initialize the 3D Functionality 
+RLAPI void UnloadAudioSystem3D();                                     // Clears all the allocated 3D Sounds
+RLAPI void UpdateAudioSystem3D();                                     // Used to update playback on 3D Sounds
+RLAPI void BindListenerToCamera(Camera3D camera);                     // Sets playback to camera position 
+RLAPI Sound3D LoadSound3D(const char *path);                          // Load from a file 
+RLAPI void UnloadSound3D(Sound3D sound3D);                            // Free up your memory kids 
+RLAPI void PlaySound3D(Sound3D sound3D, Vector3 position, float maxVolume, float minDistance, float maxDistance);  // Play sound at position and parameters 
+RLAPI void StopSound3D(Sound3D sound3D);                              // Stop sound 
+RLAPI bool IsSound3DPlaying(Sound3D sound3D);                         // Check if sound is playing. 
